@@ -13,11 +13,17 @@ LEVEL UP CHALLENGE:
 * Improve the code to accept multi-digit numbers for the calculations.
 
 pseudo-code:
-if (operator is null), as in no operation has been selected, then
-string the numbers selected together as firstNumber
 
-if (operator is true), then
-string the numbers selected together as secondNumber 
+while operator is null (no operation has been selected yet), then
+string the numbers selected together as a firstNumber
+
+once an operator has been selected, then
+string any numbers selected after as a secondNumber 
+before the = has been selected
+
+we want the numbers pressed to keep appending to each other as multi-digits
+ex. pressing buttons 1, 2, 6, 8 should equal 1268 on display
+this should also be the full number that is operated on
 
 */
 
