@@ -60,20 +60,17 @@ buttons.forEach((button) => {
             console.log(`you logged an operator: ${operator}`) // log to check
             // if the operator is C, reset
             if (operator.toLowerCase() === 'c') {
-                firstNumber = null;
-                secondNumber = null;
-                operator = null;
+                firstNumber = secondNumber = operator = null
                 console.log('you pressed C. resetting...')
+                console.log(firstNumber, secondNumber, operator) // log to check
             }
         }
         // clicking the " = " will calculate the total
         else {
             console.log('calculating...')
-            calculation();
+            calculation()
             // this resets the numbers and operators for the next calculation
-            firstNumber = null;
-            secondNumber = null;
-            operator = null;
+            firstNumber = secondNumber = operator = null
             console.log(firstNumber, secondNumber, operator) // log to check
             console.log('do another one!')
         }
@@ -84,7 +81,7 @@ buttons.forEach((button) => {
 function calculation() {
     if (firstNumber && secondNumber) {
         console.log(`logging ${firstNumber} ${operator} ${secondNumber}`) // check if it works
-        let total = 0;
+        let total = 0
 
         // check the operator 
         if (operator === '+') {
@@ -110,7 +107,7 @@ function calculation() {
     }
 }
 
-// BUILD DISPLAY HERE
+// BUILD DISPLAY CODE HERE
 
 
 
@@ -118,4 +115,4 @@ function calculation() {
 
 
 
-// LEVEL UP CHALLENGE: Improve the code to do more than a single number calculation.
+// LEVEL UP CHALLENGE: Improve the code to accept multi-digit numbers for the calculations.
