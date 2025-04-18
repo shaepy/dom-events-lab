@@ -1,5 +1,4 @@
 /* 
-
 COMPLETED USER STORIES:
 * As a user, I want to be able to select numbers so that I can perform operations with them.
 * As a user, I want to be able to add two numbers together.
@@ -9,140 +8,135 @@ COMPLETED USER STORIES:
 * As a user, I want to be able to see the output of the mathematical operation.
 * As a user, I want to be able to clear all operations and start from 0.
 
-COMPLETED * LEVEL UP CHALLENGE 1: 
-A. Improve the code to accept multi-digit numbers for the calculations.
+COMPLETED * LEVEL UP CHALLENGE 1: Improve the code to accept multi-digit numbers for the calcuates.
 
-COMPLETED * LEVEL UP CHALLENGE 2:
-B. Have the recent total become the first number to operate again
-
+COMPLETED * LEVEL UP CHALLENGE 2: Have the recent total become the first number to operate again
 */
 
 /*-------------------------------- Constants --------------------------------*/
+
 // Saving the div with class of display 
-const displayDiv = document.querySelector(".display")
+const display = document.querySelector('.display')
+
 
 /*-------------------------------- Variables --------------------------------*/
-// To perform a calculation, we need to know what numbers and which operation
-let firstNumber = null;
-let secondNumber = null
+
+// To perform a calcuate, we need to know what numbers and which operation
+let numOne = null;
+let numTwo = null
 let operator = null
 
+
 /*------------------------ Cached Element References ------------------------*/
+
 // Represent the buttons
-const buttons = document.querySelectorAll(".button")
+const buttons = document.querySelectorAll('.button')
 
 // This verifies the button values are correct
 console.log(buttons)
 
-/*-------------------------------- Functions --------------------------------*/
+
+/*----------------------------- Event Listeners -----------------------------*/
 
 // This function checks what button was pressed
 buttons.forEach((button) => {
     button.addEventListener('click', (event) => {
         // this makes an array of classes from the button that was pressed
-        const buttonClasses = Array.from(button.classList)
+        const buttonClass = Array.from(button.classList)
 
         // if button has class of number, save what number it is
-        if (buttonClasses.includes('number')) {
-            // if the operator has not been selected 
+        if (buttonClass.includes('number')) {
+            // and if the operator has not been selected 
             if (operator == null) {
-                if (firstNumber == null) {
-                    firstNumber = event.target.innerText
-                    console.log(`you logged a number: ${firstNumber}`) // check
+                if (numOne == null) {
+                    numOne = event.target.innerText
+                    console.log(`you logged a number: ${numOne}`) // check
                  }
                 else {
-                    firstNumber += event.target.innerText
-                    console.log(`${firstNumber}`) // check
+                    numOne += event.target.innerText
+                    console.log(`${numOne}`) // check
                 } 
-                displayDiv.textContent = firstNumber
+                display.textContent = numOne
             } 
-            // operator has been selected
+            // else if operator has been selected, save the second number
             else {
-                if (secondNumber == null) {
-                    secondNumber = event.target.innerText
-                    console.log(`you logged a 2nd number: ${secondNumber}`) // check
+                if (numTwo == null) {
+                    numTwo = event.target.innerText
+                    console.log(`you logged a 2nd number: ${numTwo}`) // check
                  }
                 else {
-                    secondNumber += event.target.innerText
-                    console.log(`${secondNumber}`) // check
+                    numTwo += event.target.innerText
+                    console.log(`${numTwo}`) // check
                 } 
-                displayDiv.textContent = secondNumber
+                display.textContent = numTwo
             }
         } 
-
         // if button has class of operator, save what operator it is
-        else if (buttonClasses.includes('operator')) {
+        else if (buttonClass.includes('operator')) {
             operator = event.target.innerText
-            displayDiv.textContent += operator
-            // log to check
-            console.log(`you logged an operator: ${operator}`)
+            display.textContent += operator
+            console.log(`you logged an operator: ${operator}`) // check
 
             // if operator is C - reset the entries
-            if (operator.toLowerCase() === 'c') {
-                displayDiv.textContent = 0
-                firstNumber = secondNumber = operator = null
+            if (operator === 'C') {
+                display.textContent = 0
+                numOne = numTwo = operator = null
                 // log to check
-                console.log('you pressed C. resetting...')
-                console.log(firstNumber, secondNumber, operator)
+                console.log('reset as: ', numOne, numTwo, operator)
             }
         }
-        // else, pressing = equals will calculate the total
+        // else, pressing = equals will call the calcuate function
         else {
-            const resultNumber = calculation()
-            
-            // this resets the numbers and operators for the next calculation
+            const resultNumber = calcuate()
+            // this saves the result as numOne if result is not empty and resets the others
             if (resultNumber) {
-                firstNumber = resultNumber
-                secondNumber = operator = null
-            }
+                numOne = resultNumber
+                numTwo = operator = null
+            } // else reset all
             else {
-                firstNumber = secondNumber = operator = null
+                numOne = numTwo = operator = null
             }
-
             // log to check
-            console.log(firstNumber, secondNumber, operator) 
-            console.log('do another one!')
+            console.log('saved as: ', numOne, numTwo, operator) 
         }
     })
   })
 
+
+/*-------------------------------- Functions --------------------------------*/
+
 // This function takes 2 numbers and an operator, then calculates the total
-function calculation() {
-    if (firstNumber && secondNumber) {
-        console.log(`logging ${firstNumber} ${operator} ${secondNumber}`) // log to check
+function calcuate() {
+    // if both numbers have been selected
+    if (numOne && numTwo) {
+        console.log(`logging ${numOne} ${operator} ${numTwo}`) // log to check
         // turn strings into numbers
-        firstNumber = Number(firstNumber)
-        secondNumber = Number(secondNumber)
+        numOne = Number(numOne)
+        numTwo = Number(numTwo)
         let total;
-
+    
         // check the operator and return the correct total
-
-        switch (operator) {
-            case '+':
-                total = firstNumber + secondNumber
-                displayDiv.textContent = total
-                console.log(`your addition total is: ${total}`)
-                return total;
-            case '-':
-                total = firstNumber - secondNumber
-                displayDiv.textContent = total
-                console.log(`your subtraction difference is: ${total}`)
-                return total;
-            case '*':
-                total = firstNumber * secondNumber
-                displayDiv.textContent = total
-                console.log(`your multiplication product is: ${total}`)
-                return total;
-            case '/':
-                if (!secondNumber) {
-                    displayDiv.textContent = "Try again, that's a 0."
-                    console.log('this will result in NaN or infinity')
-                    return;
-                }
-                total = firstNumber / secondNumber
-                displayDiv.textContent = total
-                console.log(`your division result is: ${total}`)
-                return total;
+        if (operator == '+') {
+            total = numOne + numTwo
+        } else if (operator == '-') {
+            total = numOne - numTwo
+        } else if (operator == '*') {
+            total = numOne * numTwo
+        } else if (operator == '/') {
+            if (!numTwo) {
+                display.textContent = 'Cannot divide by 0. Try again.'
+                console.log('this will result in NaN or infinity')
+                return
+            }
+            total = numOne / numTwo
         }
+        display.textContent = total
+        console.log(`your total is: ${total}`)
+        return total
+    }
+    // else, this will return numOne if no numTwo is selected
+    else {
+        display.textContent = numOne
+        return numOne
     }
 }
