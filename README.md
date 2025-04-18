@@ -4,6 +4,11 @@ This is a lab assignment for General Assembly to create a functioning calculator
 
 <img width="596" alt="Screenshot 2025-04-18 at 12 05 51 PM" src="https://github.com/user-attachments/assets/1fb8cd94-336b-4987-bfdd-18f51e3c23d4" />
 
+## Technologies Used
+* HTML
+* CSS
+* JavaScript
+
 ## User Stories (completed)
 * As a user, I want to be able to select numbers so that I can perform operations with them.
 * As a user, I want to be able to add two numbers together.
