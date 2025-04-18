@@ -119,27 +119,23 @@ function calculation() {
 
         switch (operator) {
             case '+':
-                //displayDiv.textContent = null
                 total = firstNumber + secondNumber
                 displayDiv.textContent = total
                 console.log(`your addition total is: ${total}`)
                 return total;
             case '-':
-                //displayDiv.textContent = null
                 total = firstNumber - secondNumber
                 displayDiv.textContent = total
                 console.log(`your subtraction difference is: ${total}`)
                 return total;
             case '*':
-                //displayDiv.textContent = null
                 total = firstNumber * secondNumber
                 displayDiv.textContent = total
                 console.log(`your multiplication product is: ${total}`)
                 return total;
             case '/':
-                //displayDiv.textContent = null
                 if (!secondNumber) {
-                    displayDiv.textContent = "Try again."
+                    displayDiv.textContent = "Try again, that's a 0."
                     console.log('this will result in NaN or infinity')
                     return;
                 }
