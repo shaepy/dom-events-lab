@@ -42,20 +42,18 @@ buttons.forEach((button) => {
         // if button has class of .number 
         if (buttonClasses.includes('number')) {
             if (firstNumber == null) {
-                firstNumber = event.target.innerText
-                firstNumber = Number(firstNumber)
-                console.log(`you logged 1st number: ${firstNumber}`)  // log to check
+                firstNumber = Number(event.target.innerText)
+                console.log(`you logged 1st number: ${firstNumber} typeof ${typeof firstNumber}`)  // log to check
             }
-            secondNumber = event.target.innerText
-            secondNumber = Number(secondNumber)
-            console.log(`you logged 2nd number: ${secondNumber}`)  // log to check
+            secondNumber = Number(event.target.innerText)
+            console.log(`you logged 2nd number: ${secondNumber} typeof ${typeof secondNumber}`)  // log to check
         } 
         // if button has class of .operator
         else if (buttonClasses.includes('operator')) {
             operator = event.target.innerText
             console.log(`you logged an operator: ${operator}`) // log to check
-
-            if (operator.toLowerCase() === 'c') { // if the operator is C, reset
+            // if the operator is C, reset
+            if (operator.toLowerCase() === 'c') {
                 firstNumber = null;
                 secondNumber = null;
                 operator = null;
@@ -69,7 +67,7 @@ buttons.forEach((button) => {
             firstNumber = null;
             secondNumber = null;
             operator = null;
-            console.log(firstNumber, secondNumber, operator)
+            console.log(firstNumber, secondNumber, operator) // log to check
             console.log('do another one!')
         }
     })
