@@ -14,5 +14,5 @@ This is a lab assignment for General Assembly to create a functioning calculator
 * As a user, I want to be able to clear all operations and start from 0.
 
 ## Level Up Challenges (in progress)
-A. Improve the code to accept multi-digit numbers for the calculations
-B. Have the recent total become the first number to operate again
+1. Improve the code to accept multi-digit numbers for the calculations
+2. Have the recent total become the first number to operate again
