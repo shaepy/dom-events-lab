@@ -56,39 +56,43 @@ buttons.forEach((button) => {
         // this makes an array of classes from the button that was pressed
         const buttonClasses = Array.from(button.classList)
 
-        // if button has class of .number, save what number it is
+        // if button has class of number, save what number it is
         if (buttonClasses.includes('number')) {
             if (firstNumber == null) {
                 firstNumber = event.target.innerText
                 displayDiv.textContent += firstNumber
-                console.log(`you logged 1st number: ${firstNumber} typeof ${typeof firstNumber}`)  // log to check
+                // log to check
+                console.log(`you logged 1st number: ${firstNumber} typeof ${typeof firstNumber}`)
             }
-            displayDiv.textContent = null // setting it back to null
             secondNumber = event.target.innerText
-            displayDiv.textContent += secondNumber
-            console.log(`you logged 2nd number: ${secondNumber} typeof ${typeof secondNumber}`)  // log to check
+            displayDiv.textContent = secondNumber
+            // log to check
+            console.log(`you logged 2nd number: ${secondNumber} typeof ${typeof secondNumber}`)
         } 
-        // if button has class of .operator, save what operator it is
+        // if button has class of operator, save what operator it is
         else if (buttonClasses.includes('operator')) {
             operator = event.target.innerText
             displayDiv.textContent += operator
-            console.log(`you logged an operator: ${operator}`) // log to check
+            // log to check
+            console.log(`you logged an operator: ${operator}`)
 
             // if operator is C - reset the entries
             if (operator.toLowerCase() === 'c') {
                 displayDiv.textContent = 0
                 firstNumber = secondNumber = operator = null
+                // log to check
                 console.log('you pressed C. resetting...')
-                // console.log(firstNumber, secondNumber, operator) // log to check
+                console.log(firstNumber, secondNumber, operator)
             }
         }
-        // else, the " = " will calculate the total
+        // else, pressing = equals will calculate the total
         else {
             displayDiv.textContent = null
             calculation()
             // this resets the numbers and operators for the next calculation
             firstNumber = secondNumber = operator = null
-            // console.log(firstNumber, secondNumber, operator) // log to check
+            // log to check
+            console.log(firstNumber, secondNumber, operator) 
             console.log('do another one!')
         }
     })
