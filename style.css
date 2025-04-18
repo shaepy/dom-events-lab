@@ -22,7 +22,8 @@
   }
   
   #calculator {
-    padding: 4%;
+    margin-top: 30px;
+    padding: 24px;
     width: 500px;
     height: 400px;
     gap: 30px;
@@ -43,7 +44,7 @@
   }
   
   .button {
-    padding: 4.3%;
+    padding: 20px;
     width: 60px;
     height: 40px;
     cursor: pointer;
