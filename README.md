@@ -35,3 +35,4 @@ Not yet implemented but considering on improving the calculator by:
 
 1. Accepting decimals
 2. Adding edge case for when trying to calculate with multiple operators selected
+3. Adding edge case for selecting too many numbers to fit on the display
