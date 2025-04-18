@@ -19,6 +19,7 @@ https://shaepy.github.io/dom-events-lab/
 ## Level Up Features
 1. The calculator accepts multi-digit numbers
 2. The recent total is always saved so it can be used as the first number in the next operation
+3. Display the entire operation in the same display until the total
 
 ## User Stories (MVP)
 * As a user, I want to be able to select numbers so that I can perform operations with them.
@@ -30,5 +31,4 @@ https://shaepy.github.io/dom-events-lab/
 * As a user, I want to be able to clear all operations and start from 0.
 
 ## Further Improvements (In progress..)
-* Display the second number in the same view before making the calculation
-* Accept decimals
+2. Accept decimals

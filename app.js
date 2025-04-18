@@ -54,7 +54,7 @@ buttons.forEach((button) => {
                  }
                 else {
                     numOne += event.target.innerText
-                    console.log(`${numOne}`) // check
+                    console.log(`it is now ${numOne}`) // check
                 } 
                 display.textContent = numOne
             } 
@@ -65,16 +65,19 @@ buttons.forEach((button) => {
                     console.log(`you logged a 2nd number: ${numTwo}`) // check
                  }
                 else {
+                    // this displays the number before it is added
+                    display.textContent += event.target.innerText
                     numTwo += event.target.innerText
-                    console.log(`${numTwo}`) // check
+                    console.log(`it is now ${numTwo}`) // check
+                    return
                 } 
-                display.textContent = numTwo
+                display.textContent += numTwo
             }
         } 
         // if button has class of operator, save what operator it is
         else if (buttonClass.includes('operator')) {
             operator = event.target.innerText
-            display.textContent += operator
+            display.textContent += ` ${operator} `
             console.log(`you logged an operator: ${operator}`) // check
 
             // if operator is C - reset the entries
