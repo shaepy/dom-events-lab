@@ -9,8 +9,8 @@ COMPLETED USER STORIES:
 * As a user, I want to be able to clear all operations and start from 0.
 
 
-LEVEL UP CHALLENGE: 
-* Improve the code to accept multi-digit numbers for the calculations.
+LEVEL UP CHALLENGE 1: 
+A. Improve the code to accept multi-digit numbers for the calculations.
 
 pseudo-code:
 
@@ -24,6 +24,10 @@ before the = has been selected
 we want the numbers pressed to keep appending to each other as multi-digits
 ex. pressing buttons 1, 2, 6, 8 should equal 1268 on display
 this should also be the full number that is operated on
+
+
+LEVEL UP CHALLENGE 2:
+B. Have the recent total become the first number to operate again
 
 */
 
@@ -56,13 +60,13 @@ buttons.forEach((button) => {
         if (buttonClasses.includes('number')) {
             if (firstNumber == null) {
                 firstNumber = event.target.innerText
-                console.log(`you logged 1st number: ${firstNumber} typeof ${typeof firstNumber}`)  // log to check
                 displayDiv.textContent += firstNumber
+                console.log(`you logged 1st number: ${firstNumber} typeof ${typeof firstNumber}`)  // log to check
             }
             displayDiv.textContent = null // setting it back to null
             secondNumber = event.target.innerText
-            console.log(`you logged 2nd number: ${secondNumber} typeof ${typeof secondNumber}`)  // log to check
             displayDiv.textContent += secondNumber
+            console.log(`you logged 2nd number: ${secondNumber} typeof ${typeof secondNumber}`)  // log to check
         } 
         // if button has class of .operator, save what operator it is
         else if (buttonClasses.includes('operator')) {
@@ -81,7 +85,6 @@ buttons.forEach((button) => {
         // else, the " = " will calculate the total
         else {
             displayDiv.textContent = null
-            console.log('calculating...')
             calculation()
             // this resets the numbers and operators for the next calculation
             firstNumber = secondNumber = operator = null
@@ -94,10 +97,11 @@ buttons.forEach((button) => {
 // This function takes 2 numbers and an operator, then calculates the total
 function calculation() {
     if (firstNumber && secondNumber) {
-        console.log(`logging ${firstNumber} ${operator} ${secondNumber}`) // check if it works
+        console.log(`logging ${firstNumber} ${operator} ${secondNumber}`) // log to check
+        // turn strings into numbers
         firstNumber = Number(firstNumber)
         secondNumber = Number(secondNumber)
-        let total = 0
+        let total;
 
         // check the operator and return the correct total
         switch (operator) {
