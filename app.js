@@ -1,12 +1,18 @@
 /* 
 User Stories
+
+COMPLETED
 * As a user, I want to be able to select numbers so that I can perform operations with them.
 * As a user, I want to be able to add two numbers together.
 * As a user, I want to be able to subtract one number from another.
 * As a user, I want to be able to multiply two numbers together.
 * As a user, I want to be able to divide one number by another.
-* As a user, I want to be able to see the output of the mathematical operation.
+
+IN PROGRESS
 * As a user, I want to be able to clear all operations and start from 0.
+
+TO DO 
+* As a user, I want to be able to see the output of the mathematical operation.
 */
 
 /*-------------------------------- Constants --------------------------------*/
@@ -60,6 +66,7 @@ buttons.forEach((button) => {
                 console.log('you pressed C. resetting...')
             }
         }
+        // clicking the " = " will calculate the total
         else {
             console.log('calculating...')
             calculation();
@@ -73,11 +80,7 @@ buttons.forEach((button) => {
     })
   })
 
-// Write something that actually does the calculation
-// It should take 2 numbers
-// Take an operator
-// And calculate the total
-
+// This function takes 2 numbers and an operator, then calculates the total
 function calculation() {
     if (firstNumber && secondNumber) {
         console.log(`logging ${firstNumber} ${operator} ${secondNumber}`) // check if it works
@@ -107,4 +110,12 @@ function calculation() {
     }
 }
 
-// clicking the " = " will calculate the total
+// BUILD DISPLAY HERE
+
+
+
+
+
+
+
+// LEVEL UP CHALLENGE: Improve the code to do more than a single number calculation.
