@@ -127,7 +127,7 @@ function calcuate() {
             total = numOne * numTwo
         } else if (operator == '/') {
             if (!numTwo) {
-                display.textContent = 'Cannot divide by 0. Try again.'
+                display.textContent = `Can't divide by 0.`
                 console.log('this will result in NaN or infinity')
                 return
             }
