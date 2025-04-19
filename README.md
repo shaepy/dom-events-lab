@@ -32,7 +32,6 @@ https://shaepy.github.io/retro-calculator
 * FIXED: Can't divide by zero text was not defaulting to 0 when operator was selected before number
 * FIXED: Plus-Minus (±) was inversing the number 0 causing incorrect calculations
 * FIXED: Calculations resulting in 0 would string the next numbers pressed
-
 * To-Do: When using ± after a second number of 0, it will perform each operation automatically except subtraction.
 
 ## User Stories (MVP)
