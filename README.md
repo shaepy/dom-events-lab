@@ -2,7 +2,7 @@
 # Description
 This is a lab assignment for General Assembly to create a functioning calculator. This calculator takes two multi-digit numbers and displays the result of a mathematical operation.
 
-<img width="606" alt="Screenshot 2025-04-18 at 4 36 14 PM" src="https://github.com/user-attachments/assets/670fa931-d568-4c1a-b2a6-41b6ef4646a0" />
+<img width="600" src="screenshot.png" />
 
 ## Deployment Link
 https://shaepy.github.io/dom-events-lab/
@@ -14,8 +14,10 @@ https://shaepy.github.io/dom-events-lab/
 
 ## Level Up Features
 1. The calculator accepts multi-digit numbers
+4. Plus-Minus feature where you can set negative or positive integers for either number
+5. Accepts decimals
 2. The recent total is always saved so it can be used as the first number in the next operation
-3. Display the entire operation in the same display until the total
+3. Displays the entire operation in the same display until the total
 
 ## Edge Cases Covered
 * When trying to divide by 0, it will return a message "can't divide by 0" until another button is selected.
@@ -39,9 +41,4 @@ https://shaepy.github.io/dom-events-lab/
 
 ## Further Improvements
 Not yet implemented but considering on improving the calculator by:
-
-1. Accepting decimals
-2. Allowing a negative number toggle
-3. Adding edge case for selecting too many numbers to fit on the display
-4. Adding edge case for not having a first number before operator
-5. Accepting negative numbers
+1. Prevent more than one decimal per number

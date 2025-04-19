@@ -30,8 +30,8 @@
     padding: 24px;
     max-width: 500px;
     width: 100%;
-    height: 400px;
-    gap: 25px;
+    height: 500px;
+    gap: 32px;
     display: flex;
     flex-direction: column;
     border-radius: 8px;
@@ -62,17 +62,9 @@
     border: 2px solid rgb(255, 238, 183);
   }
 
-  .notabutton {
-    padding: 20px;
-    width: 60px;
-    height: 40px;
-    font-size: 38px;
+  .extra {
     display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #000000;
-    background-color: #fff7d0;
-    border-radius: 4px;
-    border: 2px solid rgb(255, 238, 183);
+    justify-content: space-between;
+    margin: 0 25px;
   }
   
