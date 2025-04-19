@@ -2,7 +2,7 @@
 # Description
 This is a lab assignment for General Assembly to create a functioning calculator. This calculator takes two multi-digit numbers and displays the result of a mathematical operation.
 
-<img width="698" alt="Screenshot 2025-04-19 at 12 48 55 AM" src="https://github.com/user-attachments/assets/890939bd-a24f-4e96-8a90-a6bdddddfacc" />
+<img src="screenshot.png">
 
 ## Deployment Link
 https://shaepy.github.io/dom-events-lab/
