@@ -1,18 +1,3 @@
-/* 
-COMPLETED USER STORIES:
-* As a user, I want to be able to select numbers so that I can perform operations with them.
-* As a user, I want to be able to add two numbers together.
-* As a user, I want to be able to subtract one number from another.
-* As a user, I want to be able to multiply two numbers together.
-* As a user, I want to be able to divide one number by another.
-* As a user, I want to be able to see the output of the mathematical operation.
-* As a user, I want to be able to clear all operations and start from 0.
-
-COMPLETED * LEVEL UP CHALLENGE 1: Improve the code to accept multi-digit numbers for the calcuates.
-
-COMPLETED * LEVEL UP CHALLENGE 2: Have the recent total become the first number to operate again
-*/
-
 /*-------------------------------- Constants --------------------------------*/
 
 // Saving the div with class of display 
@@ -20,7 +5,7 @@ const display = document.querySelector('.display')
 
 /*-------------------------------- Variables --------------------------------*/
 
-// To perform a calcuate, we need to know what numbers and which operation
+// To perform a calculate, we need to know what numbers and which operation
 let numOne = null;
 let numTwo = null
 let operator = null
@@ -75,23 +60,55 @@ buttons.forEach((button) => {
         } 
         // if button has class of operator, save what operator it is
         else if (buttonClass.includes('operator')) {
+            // if operator was pressed before first number was selected, default to 0
+            if (numOne == null) {
+                numOne = '0'
+                display.textContent = numOne
+                console.log('defaulting to ' , numOne)
+            } 
+            // if there's already two numbers chosen
+            else if (numOne && numTwo) {
+                console.log('we should perform the previous operation first')
+                const anotherResult = calculate()
+                // reset if calculation came back undefined (divided by 0)
+                if (anotherResult == undefined) {
+                    numOne = numTwo = operator = null
+                    return
+                }
+                numOne = anotherResult
+                numTwo = null
+                operator = event.target.innerText
+                display.textContent = `${numOne} ${operator} `
+                console.log(numOne, operator)
+                // log to check
+                console.log('saved as: ', numOne, numTwo, operator) 
+                return
+            }  // if operator has already been chosen
+            else if (operator) {
+                console.log(`there's already an operator here`)
+                // write here
+                operator = event.target.innerText
+                display.textContent = `${numOne} ${operator} `
+                console.log('updated operator to: ', numOne, operator) // check
+                return
+            }
             operator = event.target.innerText
             display.textContent += ` ${operator} `
             console.log(`you logged an operator: ${operator}`) // check
-
-            // if operator is C - reset the entries
-            if (operator === 'C') {
-                display.textContent = 0
-                numOne = numTwo = operator = null
-                // log to check
-                console.log('reset as: ', numOne, numTwo, operator)
-            }
         }
-        // else, pressing = equals will call the calcuate function
+        // if operator is C - reset the entries
+        else if (buttonClass.includes('clear')) {
+            display.textContent = 0
+            numOne = numTwo = operator = null
+            // log to check
+            console.log('reset as: ', numOne, numTwo, operator)
+        }
+        // else, pressing = equals will call the calculate function
         else {
-            const resultNumber = calcuate()
+            const resultNumber = calculate()
             // this saves the result as numOne if result is not empty and resets the others
             if (resultNumber) {
+                display.textContent = resultNumber
                 numOne = resultNumber
                 numTwo = operator = null
             } // else reset all
@@ -108,7 +125,7 @@ buttons.forEach((button) => {
 /*-------------------------------- Functions --------------------------------*/
 
 // This function takes 2 numbers and an operator, then calculates the total
-function calcuate() {
+function calculate() {
     // if both numbers have been selected
     if (numOne && numTwo) {
         console.log(`logging ${numOne} ${operator} ${numTwo}`) // log to check
@@ -132,7 +149,6 @@ function calcuate() {
             }
             total = numOne / numTwo
         }
-        display.textContent = total
         console.log(`your total is: ${total}`)
         return total
     }
