@@ -155,14 +155,14 @@ buttons.forEach((button) => {
             else {
                 // places the plusminus on an existing number
                 if (numTwo == '0') {
-                    console.log(`this is a 0, cannot make negative.`)
+                    console.log(`this is a 0, cannot make negative. calculate instead.`)
                     display.textContent = numTwo
                     numOne = numTwo = operator = null
                     // log to check
-                    console.log('reset as: ', numOne, numTwo, operator)
+                    console.log('reset as: ', numOne, numTwo, operator) // check
                 }
                 else if (numTwo == '-') {
-                    console.log(`pressing plusmins after creating a minus on 2nd number`)
+                    console.log(`toggling off plusmins on 2nd number`)
                     numTwo = null
                     display.textContent = `${numOne} ${operator} `
                 }
@@ -172,10 +172,9 @@ buttons.forEach((button) => {
                     console.log(`making it -${numTwo}`)
                 } // plusminus before a number is selected
                 else {
-                    console.log(`adding a negative value before number is pressed`)
                     numTwo = '-'
                     display.textContent = `${numOne} ${operator} ${numTwo}`
-                    console.log('waiting for next number, just',numTwo)
+                    console.log('toggling on plusminus before number is pressed. showing only: ',numTwo)
                 }
             }
         }
