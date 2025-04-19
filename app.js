@@ -3,7 +3,6 @@
 // Saving the div with class of display 
 const display = document.querySelector('.display')
 
-
 /*-------------------------------- Variables --------------------------------*/
 
 // To perform a calculate, we need to know what numbers and which operation
@@ -23,7 +22,6 @@ console.log(buttons)
 
 /*----------------------------- Event Listeners -----------------------------*/
 
-// This function checks what button was pressed
 buttons.forEach((button) => {
     button.addEventListener('click', (event) => {
         // this makes an array of classes from the button that was pressed
@@ -80,17 +78,16 @@ buttons.forEach((button) => {
                 numTwo = null
                 operator = event.target.innerText
                 display.textContent = `${numOne} ${operator} `
-                console.log(numOne, operator)
                 // log to check
                 console.log('saved as: ', numOne, numTwo, operator) 
                 return
             }  // if operator has already been chosen
             else if (operator) {
-                console.log(`there's already an operator here`)
+                console.log(`there's already an operator here. switching it`)
                 // write here
                 operator = event.target.innerText
                 display.textContent = `${numOne} ${operator} `
-                console.log('updated operator to: ', numOne, operator) // check
+                console.log('updated operator to:', numOne, operator) // check
                 return
             }
             operator = event.target.innerText
@@ -104,15 +101,52 @@ buttons.forEach((button) => {
             // log to check
             console.log('reset as: ', numOne, numTwo, operator)
         }
+        // if pressing plusminus sign (inverse negative/positive)
+        else if (buttonClass.includes('plusminus')) {
+            // if its the first number
+            if (operator == null) {
+                if (numOne) {
+                    console.log(`this is the first number`)
+                    numOne = Number(numOne) * -1
+                    display.textContent = numOne
+                }
+                else {
+                    numOne = null
+                    display.textContent = '0'
+                    console.log('no first number. defaulting to', numOne)
+                }
+            }
+            // else, its the second one 
+            else {
+                // places the plusminus on an existing number
+                if (numTwo) {
+                    console.log(`this is the second number`)
+                    numTwo = Number(numTwo) * -1
+                    display.textContent = `${numOne} ${operator} ${numTwo}`
+                } // plusminus before a number is selected
+                else {
+                    console.log(`adding a negative value before number is pressed`)
+                    numTwo = '-'
+                    display.textContent = `${numOne} ${operator} ${numTwo}`
+                    console.log(numTwo)
+                }
+                
+            }
+        }
         // else, pressing = equals will call the calculate function
         else {
             const resultNumber = calculate()
             // this saves the result as numOne if result is not empty and resets the others
             if (resultNumber) {
-                display.textContent = resultNumber
                 numOne = resultNumber
+                display.textContent = resultNumber
                 numTwo = operator = null
             } // else reset all
+            else if (resultNumber == '0') {
+                numOne = resultNumber
+                display.textContent = resultNumber
+                numTwo = operator = null
+            }
             else {
                 numOne = numTwo = operator = null
             }
@@ -151,6 +185,9 @@ function calculate() {
             total = numOne / numTwo
         }
         console.log(`your total is: ${total}`)
+        if (total === 0) {
+            total = '0'
+        }
         return total
     }
     // else, this will return numOne if no numTwo is selected
