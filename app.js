@@ -31,7 +31,7 @@ buttons.forEach((button) => {
         if (buttonClass.includes('number')) {
             // and if the operator has not been selected 
             if (operator == null) {
-                if (numOne == null) {
+                if (numOne == null || numOne == '0') {
                     numOne = event.target.innerText
                     console.log(`you logged a number: ${numOne}`) // check
                  }

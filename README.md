@@ -39,6 +39,7 @@ https://shaepy.github.io/dom-events-lab/
 * FIXED: Pressing clear was not saving the 0 value
 * FIXED: Can't divide by zero text was not defaulting to 0 when operator was selected before number
 * FIXED: Plus-Minus was inversing the number 0 causing incorrect calculations
+* FIXED: Calculations resulting in 0 would string the next numbers pressed
 
 ## Further Improvements
 Not yet implemented but considering on improving the calculator by:
