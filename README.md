@@ -5,7 +5,7 @@ This is a lab assignment for General Assembly to create a functioning calculator
 <img src="screenshot.png">
 
 ## Deployment Link
-https://shaepy.github.io/dom-events-lab/
+https://shaepy.github.io/retro-calculator
 
 ## Technologies Used
 * HTML
