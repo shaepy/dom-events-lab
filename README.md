@@ -18,7 +18,10 @@ https://shaepy.github.io/dom-events-lab/
 3. Display the entire operation in the same display until the total
 
 ## Edge Cases Covered
-* When trying to divide by 0, it will return a message saying to "try again" until another button is selected.
+* When trying to divide by 0, it will return a message "can't divide by 0" until another button is selected.
+* Operator being selected before a number will now default to 0
+* Selecting another operator will perform the operation automatically if there’s two numbers already
+* If only one number is selected, selecting multiple operators will switch the operator.
 * When using the equals(=) sign before a second number is selected, it will keep the first number until an operator and second number is selected, or cleared.
 
 ## User Stories (MVP)
@@ -30,9 +33,12 @@ https://shaepy.github.io/dom-events-lab/
 * As a user, I want to be able to see the output of the mathematical operation.
 * As a user, I want to be able to clear all operations and start from 0.
 
+## Known Bugs
+* FIXED: Pressing clear was not saving the 0 value
+* FIXED: Can't divide by zero text was not defaulting to 0 when operator was selected before number
+
 ## Further Improvements
 Not yet implemented but considering on improving the calculator by:
 
 1. Accepting decimals
-2. Adding edge case for when trying to calculate with multiple operators selected
 3. Adding edge case for selecting too many numbers to fit on the display

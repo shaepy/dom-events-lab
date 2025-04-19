@@ -14,9 +14,9 @@
   }
   
   .display {
+    font-size: 28px;
     width: 95%;
-    height: 65px;
-    font-size: 40px;
+    height: 52px;
     padding: 10px;
     display: flex;
     justify-content: flex-end;
@@ -26,6 +26,7 @@
   }
   
   #calculator {
+    font-size: 32px;
     padding: 24px;
     max-width: 500px;
     width: 100%;
@@ -34,7 +35,7 @@
     display: flex;
     flex-direction: column;
     border-radius: 8px;
-    background-color: #a4a4a4;
+    background-color: #bababa;
   }
   
   .row {
@@ -52,7 +53,6 @@
     width: 60px;
     height: 40px;
     cursor: pointer;
-    font-size: 38px;
     display: flex;
     align-items: center;
     justify-content: center;
