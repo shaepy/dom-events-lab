@@ -57,9 +57,10 @@ buttons.forEach((button) => {
                 display.textContent += numTwo
             }
         } 
-        // if button has class of operator, save what operator it is
+
+        // if button has class of operator
         else if (buttonClass.includes('operator')) {
-            // if operator was pressed before first number was selected, default to 0
+            // and if operator was pressed before first number was selected, default to 0
             if (numOne == null) {
                 numOne = '0'
                 display.textContent = numOne
@@ -84,10 +85,9 @@ buttons.forEach((button) => {
             }  // if operator has already been chosen
             else if (operator) {
                 console.log(`there's already an operator here. switching it`)
-                // write here
                 operator = event.target.innerText
                 display.textContent = `${numOne} ${operator} `
-                console.log('updated operator to:', numOne, operator) // check
+                console.log('updated operator to:', operator) // check
                 return
             }
             operator = event.target.innerText
@@ -101,14 +101,19 @@ buttons.forEach((button) => {
             // log to check
             console.log('reset as: ', numOne, numTwo, operator)
         }
-        // if pressing plusminus sign (inverse negative/positive)
+
+        // if button is plusminus sign (inverse negative/positive)
         else if (buttonClass.includes('plusminus')) {
             // if its the first number
             if (operator == null) {
-                if (numOne) {
-                    console.log(`this is the first number`)
+                if (numOne === '0') {
+                    console.log(`this is a 0, cannot make negative.`)
+                    display.textContent = numOne
+                }
+                else if (numOne) {
                     numOne = Number(numOne) * -1
                     display.textContent = numOne
+                    console.log(`making it -${numOne}`)
                 }
                 else {
                     numOne = null
@@ -120,19 +125,19 @@ buttons.forEach((button) => {
             else {
                 // places the plusminus on an existing number
                 if (numTwo) {
-                    console.log(`this is the second number`)
                     numTwo = Number(numTwo) * -1
                     display.textContent = `${numOne} ${operator} ${numTwo}`
+                    console.log(`making it -${numTwo}`)
                 } // plusminus before a number is selected
                 else {
                     console.log(`adding a negative value before number is pressed`)
                     numTwo = '-'
                     display.textContent = `${numOne} ${operator} ${numTwo}`
-                    console.log(numTwo)
+                    console.log('waiting for next number, just',numTwo)
                 }
-                
             }
         }
+
         // else, pressing = equals will call the calculate function
         else {
             const resultNumber = calculate()
@@ -142,11 +147,6 @@ buttons.forEach((button) => {
                 display.textContent = resultNumber
                 numTwo = operator = null
             } // else reset all
-            else if (resultNumber == '0') {
-                numOne = resultNumber
-                display.textContent = resultNumber
-                numTwo = operator = null
-            }
             else {
                 numOne = numTwo = operator = null
             }
