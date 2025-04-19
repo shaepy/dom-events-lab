@@ -18,7 +18,6 @@ COMPLETED * LEVEL UP CHALLENGE 2: Have the recent total become the first number 
 // Saving the div with class of display 
 const display = document.querySelector('.display')
 
-
 /*-------------------------------- Variables --------------------------------*/
 
 // To perform a calcuate, we need to know what numbers and which operation
