@@ -41,4 +41,5 @@ https://shaepy.github.io/dom-events-lab/
 Not yet implemented but considering on improving the calculator by:
 
 1. Accepting decimals
+2. Allowing a negative number toggle
 3. Adding edge case for selecting too many numbers to fit on the display
