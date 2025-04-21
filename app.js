@@ -33,6 +33,7 @@ function buttonClick(event) {
     const button = event.target
     const type = button.dataset.type
     const value = button.dataset.value
+    // log to check 
     console.log('this button is a:', type)
     console.log('value is:', value)
 
@@ -53,6 +54,8 @@ function buttonClick(event) {
         case 'plusminus':
             handlePlusMinus()
             break
+        case 'decimal':
+            handleDecimal()
     }
 }
 
@@ -81,7 +84,6 @@ function handleOperator(value) {
     // if operator is pressed when 2 numbers have been pressed, calculate the total
     if (n1 && n2) {
       const result = calculate()
-
       // if the result returned is undefined (divided by 0)
       if (result === undefined) {return}
       // otherwise, set result to number1 and number2 to null
@@ -130,6 +132,30 @@ function handlePlusMinus() {
         }
         // check for n2. if yes, convert to negative
         n2 = n2 ? String(Number(n2) * -1) : '-'
+        display.textContent = `${n1} ${operator} ${n2}`
+    }
+}
+
+function handleDecimal() {
+    const decimal = '.'
+    // assigns number to currentNum based on whether operator is null or not
+    let currentNum = operator === null ? n1 : n2
+
+    if (!currentNum) {
+        currentNum = '0'
+    } 
+    else if (currentNum.includes(decimal)) {
+        console.log('already a decimal. cannot have multiple')
+        return
+    }
+
+    currentNum += decimal
+    
+    if (operator === null) {
+        n1 = currentNum
+        display.textContent = n1
+    } else {
+        n2 = currentNum
         display.textContent = `${n1} ${operator} ${n2}`
     }
 }
