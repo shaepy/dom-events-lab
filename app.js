@@ -178,7 +178,8 @@ function calculate() {
         case '*': result = first * second; break
         case '/':
             if (second === 0) {
-            display.textContent = "Can't divide by 0"
+            handleClear()
+            display.textContent = "Can't divide by 0."
             return
             }
             result = first / second

@@ -26,14 +26,14 @@ https://shaepy.github.io/retro-calculator
 * When using the equals (=) sign before a second number is selected, it will keep the first number.
 * When selecting ± before any button, it will default to 0. Trying to inverse a first number of 0 will default to 0 unless a decimal and number is selected.
 * The ± sign can be used before a second number is chosen, and will toggle on/off without a second number.
+* Prevents more than one decimal per number
 
 ## Known Bugs or Uncovered Edge Cases
 * FIXED: Pressing clear was not saving the 0 value
 * FIXED: Can't divide by zero text was not defaulting to 0 when operator was selected before number
 * FIXED: Plus-Minus (±) was inversing the number 0 causing incorrect calculations
 * FIXED: Calculations resulting in 0 would string the next numbers pressed
-
-* To-Do: When using ± after a second number of 0, it will perform each operation automatically except subtraction.
+* FIXED: Second number can't be inversed if 0
 
 ## User Stories (MVP)
 * As a user, I want to be able to select numbers so that I can perform operations with them.
@@ -46,5 +46,4 @@ https://shaepy.github.io/retro-calculator
 
 ## Further Improvements
 Not yet implemented but considering on improving the calculator by:
-1. Prevent more than one decimal per number
 2. Display should not bleed numbers past the screen
