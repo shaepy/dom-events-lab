@@ -1,23 +1,19 @@
 /* 
-
 - HTML was altered to include data-type attribute and data-value attributes to
 easily identify which button type and which value for numbers/operators that have
 multiple values.
-
 */
 
-/*-------------------------------- Constants --------------------------------*/
-
-const display = document.querySelector('.display')
-const buttons = document.querySelectorAll('.button')
-
-/*-------------------------------- Variables --------------------------------*/
+/*-------------------------- Variables & Constants --------------------------*/
 
 let n1 = null
 let n2 = null
 let operator = null
 
 /*------------------------ Cached Element References ------------------------*/
+
+const display = document.querySelector('.display')
+const buttons = document.querySelectorAll('.button')
 
 /*----------------------------- Event Listeners -----------------------------*/
 
@@ -39,29 +35,20 @@ function buttonClick(event) {
 
     // each type of button will perform a different function
     switch (type) {
-        case 'number':
-            handleNumber(value)
-            break
-        case 'operator':
-            handleOperator(value)
-            break
-        case 'equals':
-            handleEquals()
-            break
-        case 'clear':
-            handleClear()
-            break
-        case 'plusminus':
-            handlePlusMinus()
-            break
-        case 'decimal':
-            handleDecimal()
+        case 'number': handleNumber(value); break
+        case 'operator': handleOperator(value); break
+        case 'equals': handleEquals(); break
+        case 'clear': handleClear(); break
+        case 'plusminus': handlePlusMinus(); break
+        case 'decimal': handleDecimal(); break
     }
 }
 
 // This function figures out which position number and displays it
 function handleNumber(value) {
+    // if operator is null, it's the first number
     if (operator === null) {
+        // if n1 is 0, set the value to null (this allows the next digit selected to replace the 0)
         if (n1 === '0') {
             n1 = null
             display.textContent = '0'
@@ -79,7 +66,7 @@ function handleNumber(value) {
 // This function figures out which operator and displays it
 function handleOperator(value) {
     // if operator is pressed before number1
-    if (n1 === null) {n1 = '0'}
+    if (n1 === null) n1 = '0'
 
     // if operator is pressed when 2 numbers have been pressed, calculate the total
     if (n1 && n2) {
@@ -124,47 +111,53 @@ function handlePlusMinus() {
         n1 = n1 ? String(Number(n1) * -1) : '0'
         console.log(n1)
         display.textContent = n1
-    } else {
+    } 
+        // this is already negative, toggle
+    else {
         if (n2 === '-') {
             console.log('this is already negative')
             n2 = null
             return display.textContent = `${n1} ${operator} `
         }
-        // check for n2. if yes, convert to negative
+        // check for n2. if true, convert to negative
         n2 = n2 ? String(Number(n2) * -1) : '-'
         display.textContent = `${n1} ${operator} ${n2}`
     }
 }
 
+// This function applies decimal logic based on which number it is being added to
 function handleDecimal() {
     const decimal = '.'
-    // assigns number to currentNum based on whether operator is null or not
+    // assigns number to currentNum based on whether operator is null or not (1st or 2nd number)
     let currentNum = operator === null ? n1 : n2
-
+    // if currentNum is false (null), set to 0
     if (!currentNum) {
         currentNum = '0'
-    } 
+    } // if currentNum already includes a decimal, return
     else if (currentNum.includes(decimal)) {
         console.log('already a decimal. cannot have multiple')
         return
     }
-
+    // add decimal to currentNum
     currentNum += decimal
     
+    // if n1
     if (operator === null) {
         n1 = currentNum
         display.textContent = n1
+    // if n2
     } else {
         n2 = currentNum
         display.textContent = `${n1} ${operator} ${n2}`
     }
 }
 
+// This function calculates the total between two numbers
 function calculate() {
-// if both are null, call clear function
-    if (!n1 && !n2) {return handleClear()}
+// if both numbers are null, call clear function
+    if (!n1 && !n2) return handleClear()
     // else, return n1 if n2 is missing
-    else if (!n2) {return n1}
+    else if (!n2) return n1
 
     const first = Number(n1)
     const second = Number(n2)
