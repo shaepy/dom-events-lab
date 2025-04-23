@@ -70,12 +70,13 @@ function handleOperator(value) {
 
     // if operator is pressed when 2 numbers have been pressed, calculate the total
     if (n1 && n2) {
-      const result = calculate()
-      // if the result returned is undefined (divided by 0)
-      if (result === undefined) {return}
-      // otherwise, set result to number1 and number2 to null
-      n1 = result
-      n2 = null
+        console.log('already have 2 numbers, calculating first..')
+        const result = calculate()
+        // if the result returned is undefined (divided by 0)
+        if (result === undefined) {return}
+        // otherwise, set result to number1 and number2 to null
+        n1 = result
+        n2 = null
     }
     operator = value
     display.textContent = `${n1} ${operator}`
@@ -100,7 +101,7 @@ function handleClear() {
     // reset everything
     n1 = n2 = operator = null
     display.textContent = '0'
-    console.log('resetting...', n1, n2, operator)
+    console.log('resetting..', n1, n2, operator)
 }
 
 // This function checks which number and applies inverse of number
@@ -109,7 +110,7 @@ function handlePlusMinus() {
     if (operator === null) {
         // check for n1. if yes, convert to negative
         n1 = n1 ? String(Number(n1) * -1) : '0'
-        console.log(n1)
+        console.log('inversed:', n1)
         display.textContent = n1
     } 
         // this is already negative, toggle
@@ -121,6 +122,7 @@ function handlePlusMinus() {
         }
         // check for n2. if true, convert to negative
         n2 = n2 ? String(Number(n2) * -1) : '-'
+        console.log('inversed:', n2)
         display.textContent = `${n1} ${operator} ${n2}`
     }
 }
@@ -141,11 +143,11 @@ function handleDecimal() {
     // add decimal to currentNum
     currentNum += decimal
     
-    // if n1
+    // check if n1
     if (operator === null) {
         n1 = currentNum
         display.textContent = n1
-    // if n2
+    // or if n2
     } else {
         n2 = currentNum
         display.textContent = `${n1} ${operator} ${n2}`
@@ -163,7 +165,7 @@ function calculate() {
     const second = Number(n2)
     let result
 
-    console.log(`${n1} ${operator} ${n2}`)
+    console.log(`${n1} ${operator} ${n2}`) // log to check
 
     switch(operator) {
         case '+': result = first + second; break
@@ -171,6 +173,7 @@ function calculate() {
         case '*': result = first * second; break
         case '/':
             if (second === 0) {
+            console.log('cannot divide. will lead to infinity or NaN')
             handleClear()
             display.textContent = "Can't divide by 0."
             return
