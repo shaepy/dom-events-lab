@@ -2,10 +2,9 @@
 # Retro Calculator
 This is a lab assignment for General Assembly to create a functioning calculator. This calculator takes two multi-digit numbers and displays the result of a mathematical operation.
 
+### Deployment Link: https://shaepy.github.io/retro-calculator
+<br>
 <img src="screenshot.png" width="700px">
-
-## Deployment Link
-https://shaepy.github.io/retro-calculator
 
 ## Technologies Used
 * HTML
@@ -38,6 +37,7 @@ As a user, I want to be able to:
 
 2. After the main functionality for each button was working, I decided to tackle displaying the numbers and operators.
     * Turning the `display` class into a saved/cached element, `.textContent` would be used to switch the display based on which buttons were pressed.
+    * I also changed the CSS for a more fitting design. 
 
 3. Once the display was functioning alongside the logic and behavior as expected, I began testing for additional edge cases and ways to improve the calculator by:
     * Adding multi-digit support for each number (no longer limited to only a single digit of 0, 1, 2, 3, etc.)
