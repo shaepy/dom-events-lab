@@ -1,12 +1,11 @@
-
-# Retro Calculator
+# 🧮 Retro Calculator
 This is a lab assignment for General Assembly to create a functioning calculator. This calculator takes two multi-digit numbers and displays the result of a mathematical operation.
 
-### Deployment Link: https://shaepy.github.io/retro-calculator
+### Deployment 🔗 https://shaepy.github.io/retro-calculator
 <br>
 <img src="screenshot.png" width="700px">
 
-## Technologies Used
+## Tech Stack
 * HTML
 * CSS
 * JavaScript
@@ -17,7 +16,7 @@ This is a lab assignment for General Assembly to create a functioning calculator
 2. The recent total is always saved so it can be used as the first number in the next operation
 3. Displays the entire operation in the same display until the total
 
-## User Stories (MVP Requirements)
+## MVP Requirements
 As a user, I want to be able to:
 * select numbers so that I can perform operations with them.
 * add two numbers together.
@@ -36,14 +35,10 @@ As a user, I want to be able to:
       When I click an operator, I should know which operator and display that operator..
       When I click equals, I should calculate the two numbers based on the operator
 ```
-2. Created an event listener for the HTML class of `button`. It would check to see whether the button class was an operator, number, or equals and continue the logic of determining which button, which operator, or calling the calculate() function (if equals).
-```
-buttons.forEach((button) => {
-     button.addEventListener('click', (event) => {
-         // this makes an array of classes from the button that was pressed
-         const buttonClasses = Array.from(button.classList)
- 
-```
+2. Created an event listener for the HTML class of `button`. It would check to see whether the button class was an operator, number, or equals and continue the logic of determining which button, which operator, or calling the `calculate()` function (if equals).
+
+<img width="600" alt="button-event-listener" src="https://github.com/user-attachments/assets/bd1d5133-2a80-46c8-925e-b3f4cf0b73e6" />
+
 3. After the main functionality for each button was working, I decided to tackle displaying the numbers and operators.
     * Turning the `display` class into a saved/cached element, `.textContent` would be used to switch the display based on which buttons were pressed.
     * I also changed the CSS for a more fitting design.
@@ -63,7 +58,7 @@ const displayDiv = document.querySelector(".display")
     * Calculations resulting in 0 would string the next numbers pressed
     * Toggling Plus-Minus before second number was presesd would result in NaN
 
-<img width="650" alt="refactor-js-nested-ifs" src="https://github.com/user-attachments/assets/4da261c8-7027-4df7-bf32-74bd14854e31" />
+<img width="600" alt="refactor-js-nested-ifs" src="https://github.com/user-attachments/assets/4da261c8-7027-4df7-bf32-74bd14854e31" />
 
 6. As I added more edge cases and fixed more bugs, I realized my code was getting nested with various if/else statements. This made it difficult to return and add more functionality due to the lack of modularity. I decided to refactor the code with a branch of `refactor-js`.
     * Added additional HTML attributes of `data-type` and `data-value` to some buttons.
@@ -72,8 +67,7 @@ const displayDiv = document.querySelector(".display")
     * This way, repeatable actions like `handleClear()` can be reused if needed.
 
 ```
-// HTML
-// refactored to include data-type and data-value to distinguish buttons
+// HTML refactored to include data-type and data-value to distinguish buttons
          <div class="button" data-type="number" data-value="7">7</div>
          <div class="button" data-type="number" data-value="8">8</div>
          <div class="button" data-type="number" data-value="9">9</div>
@@ -81,74 +75,17 @@ const displayDiv = document.querySelector(".display")
          <div class="button" data-type="equals">=</div>
          <div class="button" data-type="plusminus">±</div>
          <div class="button" data-type="clear">C</div>
-
-// app.js
-// Event listener for each button when pressed, to call the buttonClick function
-buttons.forEach(button => {
-     button.addEventListener('click', buttonClick)
-   })
-
-// This function will switch based on which type of button it is
-function buttonClick(event) {
-    const button = event.target
-    const type = button.dataset.type
-    const value = button.dataset.value
-    // log to check 
-    console.log('this button is a:', type)
-    console.log('value is:', value)
-
-    // each type of button will perform a different function
-    switch (type) {
-        case 'number': handleNumber(value); break
-        case 'operator': handleOperator(value); break
-        case 'equals': handleEquals(); break
-        case 'clear': handleClear(); break
-        case 'plusminus': handlePlusMinus(); break
-        case 'decimal': handleDecimal(); break
-    }
-}
 ```
-```
-// This function sets variables back to null and displays '0'
-function handleClear() {
-    // reset everything
-    n1 = n2 = operator = null
-    display.textContent = '0'
-    console.log('resetting..', n1, n2, operator)
-}
-```
+<img width="595" alt="buttonClick()" src="https://github.com/user-attachments/assets/ddf0677c-f1f0-4df5-b0a0-def0450ce086" />
+
+<img width="527" alt="equals-and-clear" src="https://github.com/user-attachments/assets/0c13015c-4958-46e0-9ad2-08db80706c88" />
+
 7. After refactoring my code to be more modular and easier to maintain, I added a new handler for a type of `decimal` and removed it from the `data-type` of `number`.
     * This allowed me to control the decimal logic specifically to this `data-type`.
     * Now I can cover the edge case of only one decimal being added to each number.
     * Also, added support to decimal so when pressed before a number, it defaults to `0.`
-```
-// This function applies decimal logic based on which number it is being added to
-function handleDecimal() {
-    const decimal = '.'
-    // assigns number to currentNum based on whether operator is null or not (1st or 2nd number)
-    let currentNum = operator === null ? n1 : n2
-    // if currentNum is false (null), set to 0
-    if (!currentNum) {
-        currentNum = '0'
-    } // if currentNum already includes a decimal, return
-    else if (currentNum.includes(decimal)) {
-        console.log('already a decimal. cannot have multiple')
-        return
-    }
-    // add decimal to currentNum
-    currentNum += decimal
-    
-    // check if n1
-    if (operator === null) {
-        n1 = currentNum
-        display.textContent = n1
-    // or if n2
-    } else {
-        n2 = currentNum
-        display.textContent = `${n1} ${operator} ${n2}`
-    }
-}
-```
+
+<img width="600" alt="handleDecimal()" src="https://github.com/user-attachments/assets/b3a64b0a-d2f0-4eed-9d0e-48eed1c0a9c1" />
 
 ## Edge Cases Covered
 * When trying to divide by 0, it returns a message "can't divide by 0".
